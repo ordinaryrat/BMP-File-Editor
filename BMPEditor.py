@@ -1,3 +1,5 @@
+# 1/7/2026, OrdinaryRat
+
 from math import ceil
 
 def splitHexes(hex_string):
@@ -308,4 +310,5 @@ class Image:
                 current_hex_bytes += "00";
         output_bytes = bytes.fromhex(current_hex_bytes);
         with open(image_name, "wb") as image_output:
+
             image_output.write(output_bytes);
