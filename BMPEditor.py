@@ -194,6 +194,11 @@ class Image:
             raise Exception("ERROR: Pixel out of bounds");
         if self.color_table_used:
             converted_color_code = [hex(255)[2:] if len(color) == 3 else hex(color[3])[2:], hex(color[0])[2:], hex(color[1])[2:], hex(color[2])[2:]];
+            
+            for color_id in range(len(converted_color_code)):
+                if len(converted_color_code[color_id]) == 1:
+                    converted_color_code[color_id] = '0' + converted_color_code[color_id];
+                    
             converted_color_code = " ".join(converted_color_code);
             found_value = False;
             for i in range(len(self.color_table)):
@@ -312,4 +317,5 @@ class Image:
         with open(image_name, "wb") as image_output:
 
             image_output.write(output_bytes);
+
 
