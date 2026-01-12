@@ -212,7 +212,7 @@ class Image:
             if len(converted_index_value) > self.current_parameters["Bits Per Pixel"]:
                 raise Exception("ERROR: Attempting to add more colors then the bit count allows");
             if len(converted_index_value) < self.current_parameters["Bits Per Pixel"]:
-                converted_index_value = ('0' * (len(converted_index_value) - self.current_parameters["Bits Per Pixel"])) + converted_index_value;
+                converted_index_value = ('0' * (self.current_parameters["Bits Per Pixel"] - len(converted_index_value))) + converted_index_value;
             self.scan_lines[position[1]][position[0]] = converted_index_value;
         else:
             if self.current_parameters["Bits Per Pixel"] == 24:
@@ -312,3 +312,4 @@ class Image:
         with open(image_name, "wb") as image_output:
 
             image_output.write(output_bytes);
+
